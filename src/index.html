@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<script>window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery.min.js');</script>
+    <script src="../node_modules//bootstrap/dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <style>
+     ol {color: black;}
+   </style>
+    <title></title>
+  </head>
+  <body>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" id="target">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-success" onclick="getValue()">Search</button>
+      </div>
+    </div>
+    <div id="result_block">
+  </div>
+  <div>
+    <ol id="list">
+    </ol>
+  </div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
