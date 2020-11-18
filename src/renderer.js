@@ -1,6 +1,9 @@
 const { ipcRenderer } = require('electron');
 const Spin = require("./spin.umd");
 
+
+function openPath(id){
+  ipcRenderer.send("open", id);};
 function getValue(){
     var elem = document.getElementById("list");
     elem.innerHTML = "";
@@ -12,8 +15,7 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
    if(arg.length){ 
     result_block.innerHTML = "";
     var val = document.createElement("li");
-    var val2 = document.createTextNode(arg);
-    val.appendChild(val2);
+    val.innerHTML = `<a id="${arg}" onclick="openPath(this.id)">${arg}</a>`;
     elem.appendChild(val);
    };
   });

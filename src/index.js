@@ -32,7 +32,7 @@ const createWindow = () => {
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   // Open the DevTools.
- // mainWindow.webContents.openDevTools();
+ mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -75,7 +75,6 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 });
 //finddir.then(disks => console.log(disks));
 finddir.then(disks => {
-    console.log(disks);
     disks.forEach(element => {try {child_process.exec(`chcp 65001 | WHERE /R ${element} *${arg}*`,{encoding:"utf8"},function(error,stdout,stderr){
       var mas = stdout.split("\n");
       mas.forEach(element => event.reply("asynchronous-reply",element));
@@ -83,5 +82,6 @@ finddir.then(disks => {
         });} catch(err){event.reply("asynchronous-reply",err);}});
       }).catch(error => event.reply("asynchronous-reply",error));
   });
+  ipcMain.on("open", (event, arg) => {child_process.exec(`start "" "${arg}"`)})
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
