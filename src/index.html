@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery.min.js');</script>
     <script src="../node_modules//bootstrap/dist/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -16,7 +17,7 @@
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" id="target">
       <div class="input-group-append">
-        <button type="submit" class="btn btn-success" onclick="getValue()">Search</button>
+        <input type="submit" value="Search" class="btn btn-success" onclick="getValue()"></input>
       </div>
     </div>
     <div id="result_block">

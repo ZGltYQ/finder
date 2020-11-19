@@ -1,5 +1,6 @@
 const { ipcRenderer } = require('electron');
-const Spin = require("./spin.umd");
+const { get } = require('systeminformation');
+
 
 
 function openPath(id){
@@ -21,3 +22,5 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
   });
 
 }
+$('body').keyup(function(event) {
+  if(event.key=="Enter") {getValue();}});
