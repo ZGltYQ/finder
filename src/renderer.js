@@ -3,8 +3,10 @@ const { get } = require('systeminformation');
 
 
 
-function openPath(id){
+function openFile(id){
   ipcRenderer.send("open", id);};
+function openPath(id){
+    ipcRenderer.send("open_path", id);};
 function getValue(){
     var elem = document.getElementById("list");
     elem.innerHTML = "";
@@ -16,11 +18,11 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
    if(arg.length){ 
     result_block.innerHTML = "";
     var val = document.createElement("li");
-    val.innerHTML = `<a id="${arg}" onclick="openPath(this.id)">${arg}</a>`;
+    val.className = "nav-item dropdown";
+    val.innerHTML = `<a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${arg}</a>\n<div class="dropdown-menu">\n<a class="dropdown-item" id="${arg}" onclick="openFile(this.id)">Open</a>\n<a class="dropdown-item" id="${arg}" onclick="openPath(this.id)">Open path</a>\n</div>`;
     elem.appendChild(val);
    };
   });
-
 }
 $('body').keyup(function(event) {
   if(event.key=="Enter") {getValue();}});

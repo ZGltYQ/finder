@@ -18,10 +18,10 @@ let mainWindow;
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 600,
-    minWidth: 600,
-    height: 800,
-    minHeight: 800,
+    width: 800,
+    minWidth: 800,
+    height: 1000,
+    minHeight: 1000,
     backgroundColor: '#2e2c29',
     webPreferences: {
       nodeIntegration: true
@@ -32,7 +32,7 @@ const createWindow = () => {
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   // Open the DevTools.
- mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -82,6 +82,10 @@ finddir.then(disks => {
         });} catch(err){event.reply("asynchronous-reply",err);}});
       }).catch(error => event.reply("asynchronous-reply",error));
   });
-  ipcMain.on("open", (event, arg) => {child_process.exec(`start "" "${arg}"`)})
+  ipcMain.on("open", (event, arg) => {child_process.exec(`start "" "${arg}"`)});
+  ipcMain.on("open_path", (event, arg) => {
+  var mas = arg.split("\\");
+  mas.pop();
+  child_process.exec(`start "" "${mas.join("\\")}"`)});
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
